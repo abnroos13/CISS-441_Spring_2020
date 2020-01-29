@@ -22,7 +22,7 @@ with open('1_3a Chattanooga Weather Observations.csv') as file:
         count += 1
         
 
-        if count <= 15:
+        if count <= 10:
             chat_date = row['Date']
             chat_maximumtemp = row['MaximumTemp']
             chat_minimumtemp = row['MinimumTemp']
