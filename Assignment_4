@@ -1,0 +1,34 @@
+# CISS 441 Business Intelligence
+# Spring 2020
+# Assignment 4 Data Types, Sources & Usage
+# 28Jan2020
+
+
+
+chat_weather_data = []
+
+import json
+import csv
+
+
+
+with open('1_3a Chattanooga Weather Observations.csv') as file:
+    reader = csv.DictReader(file)
+
+    count = 0
+
+    for row in reader:
+        chat_weather_data.append(row)
+        count += 1
+        
+
+        if count <= 15:
+            chat_date = row['Date']
+            chat_maximumtemp = row['MaximumTemp']
+            chat_minimumtemp = row['MinimumTemp']
+            chat_averagetemp = row['AverageTemp']
+            print(count, chat_date, chat_maximumtemp,chat_minimumtemp,chat_averagetemp)
+            
+print('found this many rows:' + str(len(chat_weather_data)))
+with open('chat_weather_data.json', 'w') as fp:
+    json.dump(chat_weather_data, fp, sort_keys=True, indent=4, separators=(',',':'))
