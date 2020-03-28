@@ -16,13 +16,13 @@
   },
   "titleConfiguration" : {
     "enabled" : true,
-    "title" : "COVID-19 Total Cases and Deaths Since 01 Mar 2020",
-    "subTitle" : null,
+    "title" : "COVID-19-geographic-disbtribution-worldwide-2020-03-28",
+    "subTitle" : "fzshf",
     "titleStyle" : {
       "color" : "rgba(0,0,0,1.0)",
       "fontSize" : 18,
       "bold" : true,
-      "italic" : false
+      "italic" : true
     },
     "subTitleStyle" : {
       "color" : null,
@@ -41,7 +41,7 @@
   },
   "legendConfiguration" : {
     "enabled" : true,
-    "title" : null,
+    "title" : "Legend",
     "layout" : "HORIZONTAL",
     "horizontalAlignment" : "CENTER",
     "verticalAlignment" : "BOTTOM",
@@ -92,14 +92,14 @@
     }
   },
   "plotConfigurations" : [ {
-    "columns" : [ "cases", "deaths" ],
-    "plotType" : "line",
+    "columns" : [ "sum(cases)" ],
+    "plotType" : "pie",
     "stackingType" : "NONE",
     "additionalColumns" : { },
     "aggregationConfiguration" : {
-      "enabled" : false,
-      "groupByColumns" : [ "dateRep" ],
-      "aggregationFunction" : "COUNT",
+      "enabled" : true,
+      "groupByColumns" : [ "geoId" ],
+      "aggregationFunction" : "SUM",
       "aggregationParameter" : null
     },
     "typeSpecificConfiguration" : {
@@ -164,7 +164,7 @@
     "maxValue" : null,
     "logarithmic" : false,
     "plotLines" : [ ],
-    "column" : "dateRep",
+    "column" : "geoId",
     "styleConfiguration" : {
       "title" : null,
       "titleStyle" : {
