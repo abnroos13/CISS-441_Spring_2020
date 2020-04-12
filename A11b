@@ -1,0 +1,20 @@
+import datetime as dt
+import matplotlib.pyplot as plt
+from matplotlib import style
+import pandas as pd
+import pandas_datareader as web
+
+style.use('ggplot')
+
+start = dt.datetime(2000,1,1)
+end = dt.datetime(2016,12,31)
+
+df = web.DataReader('SATS','yahoo', start, end)
+print (df.head(6))
+
+df.to_csv('SATS.csv') #commented out code printed to the screen and to a csv file
+
+df = pd.read_csv('SATS.csv', parse_dates=True, index_col=0) ### can read in json, sql, excel etc...
+# print (df.head())
+df.plot() #df['Adj Close'].plot() plots on the Adj Close Column
+plt.show()
