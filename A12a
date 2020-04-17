@@ -1,0 +1,32 @@
+# CISS 441 Biz Intel
+# Assignment 12-A
+#16 April 2020
+#web scraping files require continual maintenane due to web pages changing data formats
+# this scrape is related to the reference web page only. it has to be modified for other web pages based on data format
+
+from bs4 import BeautifulSoup
+import requests
+
+# reference
+# https://realpython.com/beautiful-soup-web-scraper-python/
+
+URL = 'https://www.monster.com/jobs/search/?q=Software-Developer&where=Tennessee'
+page = requests.get(URL)
+soup = BeautifulSoup(page.content, 'html.parser')
+results = soup.find(id='ResultsContainer')
+#print(results.prettify())
+
+job_elems = results.find_all('section', class_= 'card-content')
+for job_elem in job_elems:
+    #Each job_elems is a new BeautifulSoup object
+    # Can use the same method on it as done before
+    title_elem = job_elem.find('h2', class_= 'title')
+    company_elem = job_elem.find('div', class_= 'company')
+    location_elem = job_elem.find('div', class_= 'location')
+    if None in (title_elem, company_elem, location_elem):
+        continue # CHRIS, YES YOU! Indentions really do matter! If they are not correct you get a blank screen!!
+    print('-----------------------')
+    print(title_elem.text.strip())
+    print(company_elem.text.strip())
+    print(location_elem.text.strip())
+    print()
